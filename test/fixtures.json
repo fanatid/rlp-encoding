@@ -1,0 +1,61 @@
+{
+  "valid": [{
+    "description": "single byte",
+    "data": "61",
+    "encoded": "61",
+    "length": 1
+  }, {
+    "description": "0-55 bytes long string",
+    "data": "646f67",
+    "encoded": "83646f67",
+    "length": 4
+  }, {
+    "description": "strings over 55 bytes long",
+    "data": "546869732066756e6374696f6e2074616b657320696e206120646174612c20636f6e7665727420697420746f20627566666572206966206e6f742c20616e642061206c656e67746820666f7220726563757273696f6e",
+    "encoded": "b856546869732066756e6374696f6e2074616b657320696e206120646174612c20636f6e7665727420697420746f20627566666572206966206e6f742c20616e642061206c656e67746820666f7220726563757273696f6e",
+    "length": 88
+  }, {
+    "description": "0-55 bytes long list",
+    "data": ["646f67", "676f64", "636174"],
+    "encoded": "cc83646f6783676f6483636174",
+    "length": 13
+  }, {
+    "description": "list over 55 bytes long",
+    "data": ["54686973", "66756e6374696f6e", "74616b6573", "696e", "61", "64617461", "636f6e76657274", "6974", "746f", "627566666572", "6966", "6e6f74", "616e64", "61", "6c656e677468", "666f72", "726563757273696f6e"],
+    "encoded": "f85384546869738866756e6374696f6e8574616b657382696e61846461746187636f6e7665727482697482746f86627566666572826966836e6f7483616e6461866c656e67746883666f7289726563757273696f6e",
+    "length": 85
+  }, {
+    "description": "nested lists",
+    "data": [ [], [ [] ], [ [], [ [] ] ] ],
+    "encoded": "c7c0c1c0c3c0c1c0",
+    "length": 8
+  }, {
+    "description": "zero values",
+    "data": "00",
+    "encoded": "00",
+    "length": 1
+  }, {
+    "description": "empty buffer",
+    "data": "",
+    "encoded": "80",
+    "length": 1
+  }],
+  "invalid": {
+    "decode": [{
+      "description": "wrong encoded a zero",
+      "data": "f9005f",
+      "regexp": "^Error: Extra zeros$"
+    }, {
+      "description": "not enough data for decode",
+      "data": "84646f67",
+      "regexp": "^Error: Not enough data for decode$"
+    }]
+  },
+  "encode": [{
+    "description": "different types",
+    "toBuffers": false,
+    "data": [null, 0, "dog", "0x12", 4],
+    "encoded": "c8808083646f671204",
+    "length": 9
+  }]
+}
