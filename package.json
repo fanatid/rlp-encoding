@@ -22,10 +22,11 @@
     "url": "https://github.com/fanatid/rlp-encoding"
   },
   "scripts": {
+    "build": "babel lib -d es5",
     "coverage": "nyc --require babel-register tape test/*.js",
     "coverage-lcov": "npm run coverage && nyc report -r lcov",
     "lint": "standard",
-    "prepublish": "babel lib -d es5",
+    "prepublish": "npm run build",
     "test": "npm run lint && npm run unit",
     "unit": "tape -r babel-register test/*.js"
   },
