@@ -13,16 +13,17 @@
   "license": "MIT",
   "author": "Kirill Fomichev <fanatid@ya.ru> (https://github.com/fanatid)",
   "files": [
+    "es",
     "es5",
-    "lib"
+    "index.es",
+    "index.js"
   ],
-  "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/fanatid/rlp-encoding"
   },
   "scripts": {
-    "build": "babel lib -d es5",
+    "build": "babel es -d es5",
     "coverage": "nyc --require babel-register tape test/*.js",
     "coverage-lcov": "npm run coverage && nyc report -r lcov",
     "lint": "standard",
