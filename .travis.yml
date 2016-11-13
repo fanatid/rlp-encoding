@@ -4,6 +4,7 @@ os:
 language: node_js
 node_js:
   - "6"
+  - "7"
 env:
   matrix:
     - TEST_SUITE=unit

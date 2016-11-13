@@ -1,6 +1,6 @@
-import test from 'tape'
-import * as RLP from '../'
-import fixtures from './fixtures.json'
+const test = require('tape')
+const RLP = require('../')
+const fixtures = require('./fixtures.json')
 
 function toBuffers (value) {
   if (Array.isArray(value)) return value.map(toBuffers)
