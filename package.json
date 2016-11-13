@@ -1,6 +1,6 @@
 {
   "name": "rlp-encoding",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Abstract-encoding interface for RLP",
   "keywords": [
     "ethereum",
